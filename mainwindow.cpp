@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
  *     --按下计算符->数字存入存储2，清空显示器，进入状态4    已经实现
  * 4----------->用存储1，2，3进行计算，加入显示器，进入状态1
  *取整？
+ *
+ * 任何时候按下C键----清空显示器，回到状态0
  * */
 /*   *pushButton_plus;
      *pushButton_minus;
@@ -70,6 +72,9 @@ void MainWindow::onButton()
                ui->lcdNumber->display(0);
                status=4;break;
         }
+       }else if(senderName=="clear"){//C 键
+           ui->lcdNumber->display(0);
+           status=0;
        }else {//计算符
            cout<<"计算符！"<<endl;
            switch(status){
@@ -86,9 +91,8 @@ void MainWindow::onButton()
            }
        }
     if(status==4){
-        cout<<"EMIT!"<<endl;
         emit Status4();
-    }cout<<"status="<<status<<endl;
+    }cout<<"->"<<status<<endl;
 }
 //4----------->用存储1，2，3进行计算，加入显示器，进入状态1
 void MainWindow::doStatus4()
