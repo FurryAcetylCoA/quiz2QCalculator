@@ -58,8 +58,12 @@ void MainWindow::onButton()
         case 2:
                status+=1;
         case 1:
-        case 3:
-            ui->lcdNumber->display(stoi(senderName)+ui->lcdNumber->intValue()*10);//这太扭曲了
+        case 3:if(ui->lcdNumber->intValue()<pow(10,8))
+            {ui->lcdNumber->display(stoi(senderName)+ui->lcdNumber->intValue()*10);}//这太扭曲了
+            else{QMessageBox::warning(this,"Too many digits","Too many digits");
+                ui->lcdNumber->display(0);
+                status=0;
+            }
                break;
         case 4:break;
         }
