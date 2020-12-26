@@ -58,7 +58,8 @@ void MainWindow::onButton()
         case 2:
                status+=1;
         case 1:
-        case 3:ui->lcdNumber->display(stoi(senderName)+ui->lcdNumber->intValue()*10);//这太扭曲了
+        case 3:
+            ui->lcdNumber->display(stoi(senderName)+ui->lcdNumber->intValue()*10);//这太扭曲了
                break;
         case 4:break;
         }
@@ -98,7 +99,7 @@ void MainWindow::onButton()
 void MainWindow::doStatus4()
 {
     cout<<"doStatus4"<<endl;
-    int equalto=0;
+    double equalto=0;
     cout<<"  operator is:"<<theoperator2<<endl;
     if(theoperator2=="plus"){
         cout<<"plus";
@@ -109,9 +110,9 @@ void MainWindow::doStatus4()
         equalto=num1*num2;
     }else if(theoperator2=="chufa"){
         if(num2==0){
-            QMessageBox::warning(this,"除以零？","很遗憾，不能除以零");
+            QMessageBox::warning(this,"Divide by zero?","Sorry,I thought about that.");
         }else{
-            equalto=num1/num2;
+            equalto=num1*1.0/num2;
         }
      }else {cout<<"W:Unknown operator";}
     cout<<"  equalto:"<<equalto<<endl;
