@@ -8,8 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     QList<QPushButton*> NumberButtons = this->ui->centralwidget->findChildren<QPushButton*>();
-    for (int i=0;i<NumberButtons.count() ;i++ ) {
-        connect(NumberButtons.at(i),SIGNAL(clicked()),this,SLOT(onButton()));
+    for(auto x:NumberButtons){
+        connect(x,SIGNAL(clicked()),this,SLOT(onButton()));
     }
     status=0;
     connect(this,SIGNAL(Status4()),this,SLOT(doStatus4()));
